@@ -1,29 +1,30 @@
 def signup
   puts "choisissez un mot de pass"
   print ">"
-  utilisateur = gets.chomp
-  return utilisateur
+  gets.chomp
 end
 
 def login(x)
-  puts "Saisissez votre mot de pass"
-  print ">"
-  mdp = gets.chomp
-    if mdp != x
-      puts "Mauvais mot de pass ! Veuillez recommencer"
-      login = gets.chomp
-    end
-  welcome_screen()
+  mdp = nil
+    while mdp != x
+      puts "Saisissez le mot de passe pour entrer :"
+      print "> "
+      mdp = gets.chomp
+      if mdp != x
+        puts "Mauvais mot de passe !\n\n"
+      end
+  end
 end
 
 def welcome_screen
   puts "Bienvenu dans votre espace !"
   puts "Je suis le maitre des lieux"
-  return welcome_screen
 end
-def perform
-  user = signup
-  login(user)
 
+def perform
+  x = signup
+  login(x)
+  welcome_screen
 end
+
 perform
